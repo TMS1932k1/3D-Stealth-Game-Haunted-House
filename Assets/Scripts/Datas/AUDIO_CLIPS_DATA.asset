@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0650a2702bc3fc42b33e5f59439268e, type: 3}
+  m_Name: AUDIO_CLIPS_DATA
+  m_EditorClassIdentifier: 
+  player:
+  - nameData: Footsteps
+    audioClip: {fileID: 8300000, guid: 07e520bb410492d47bf739846d70f2a3, type: 3}
+    volume: 1
+    isLoop: 1
+  enemy:
+  - nameData: Move
+    audioClip: {fileID: 8300000, guid: 98ea14dfdb9dce74a976520f134fd1a2, type: 3}
+    volume: 0.4
+    isLoop: 1
+  ui: []
+  bgm:
+  - nameData: Ambient
+    audioClip: {fileID: 8300000, guid: 205287722f2b6b64583b86d65fdeeb11, type: 3}
+    volume: 0.5
+    isLoop: 1
+  - nameData: Escape
+    audioClip: {fileID: 8300000, guid: c0f716a9e9ac00c438b95158ba195a58, type: 3}
+    volume: 1
+    isLoop: 0
+  - nameData: Caught
+    audioClip: {fileID: 8300000, guid: 2789d5ce62baaba4ab1ee8bb172304a6, type: 3}
+    volume: 1
+    isLoop: 0
