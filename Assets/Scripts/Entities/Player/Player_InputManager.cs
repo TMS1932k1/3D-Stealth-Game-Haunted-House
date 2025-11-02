@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player_InputManager : MonoBehaviour
 {
+    private Player player;
+
     private Player_InputSystem input;
     private Vector2 moveInput;
 
@@ -9,12 +11,18 @@ public class Player_InputManager : MonoBehaviour
     public float horizontalValue { get; private set; }
 
 
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
+
     private void OnEnable()
     {
         if (input == null)
         {
             input = new Player_InputSystem();
             input.Player.Movement.performed += i => moveInput = i.ReadValue<Vector2>();
+            input.Player.Active.performed += i => player.Active();
         }
 
         input.Enable();

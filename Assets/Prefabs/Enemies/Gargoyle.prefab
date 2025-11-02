@@ -185,7 +185,12 @@ PrefabInstance:
     - target: {fileID: 1701005874680206579, guid: 13cd427b6beda744f8218cfd28c6adc0,
         type: 3}
       propertyPath: m_Name
-      value: Observer
+      value: Caught_Observer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701005874680206579, guid: 13cd427b6beda744f8218cfd28c6adc0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,7 +2,5 @@ using UnityEngine;
 
 public interface IGetCaught
 {
-    public void DisableInputManager();
-
-    public Transform GetTransform();
+    public abstract void DisableInputManager();
 }

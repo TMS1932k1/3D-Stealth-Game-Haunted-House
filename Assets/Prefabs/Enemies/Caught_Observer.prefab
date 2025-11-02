@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3492110166605099072}
   - component: {fileID: 2462581961751173969}
   m_Layer: 0
-  m_Name: Observer
+  m_Name: Caught_Observer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

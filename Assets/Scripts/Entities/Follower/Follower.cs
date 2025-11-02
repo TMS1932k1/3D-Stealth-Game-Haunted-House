@@ -25,17 +25,15 @@ public class Follower : Npc, IGetCaught
         stateMachine.InitializeState(idleState);
     }
 
-    public override void ActiveNpc()
-    {
-        base.ActiveNpc();
-
-
-    }
-
     public void DisableInputManager()
     {
         followerMovement.DisableFollowMovement();
     }
 
-    public Transform GetTransform() => transform;
+    public override void Active(Player player)
+    {
+        base.Active(player);
+
+        followerMovement.AddFollowTarget(player.transform);
+    }
 }
