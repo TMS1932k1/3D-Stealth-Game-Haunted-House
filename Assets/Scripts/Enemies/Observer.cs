@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Observer : MonoBehaviour
 {
-    private Transform playerTransform;
+    private Transform caughtTransform;
     private bool isPlayerInRange;
     private bool isCaughted;
 
 
     private void Update()
     {
-        if (isPlayerInRange && playerTransform != null && !isCaughted)
+        if (isPlayerInRange && caughtTransform != null && !isCaughted)
         {
             Debug.Log($"[{name}]: Player is in range");
             HandleRayCast();
@@ -18,35 +18,35 @@ public class Observer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Player player = other.GetComponent<Player>();
-        if (player != null)
+        IGetCaught canCaught = other.GetComponent<IGetCaught>();
+        if (canCaught != null)
         {
             isPlayerInRange = true;
-            playerTransform = player.transform;
+            caughtTransform = canCaught.GetTransform();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Player player = other.GetComponent<Player>();
-        if (player != null)
+        IGetCaught canCaught = other.GetComponent<IGetCaught>();
+        if (canCaught != null)
         {
             isPlayerInRange = false;
-            playerTransform = null;
+            caughtTransform = null;
         }
     }
 
     private void HandleRayCast()
     {
-        Vector3 direction = playerTransform.position - transform.position + Vector3.up; // Vector3.up to ray hit between player
+        Vector3 direction = caughtTransform.position - transform.position;
 
         if (Physics.Raycast(transform.position, direction, out RaycastHit raycastHit))
         {
-            Player player = raycastHit.collider.GetComponent<Player>();
-            if (player != null)
+            IGetCaught canCaught = raycastHit.collider.GetComponent<IGetCaught>();
+            if (canCaught != null)
             {
                 isCaughted = true;
-                GameManager.instance.OnPlayerCaughted(player);
+                GameManager.instance.OnPlayerCaughted(canCaught);
             }
         }
     }

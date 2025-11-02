@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class StateMachine
 {
-    public PlayerState currentState { get; private set; }
+    public EntityState currentState { get; private set; }
 
 
-    public void InitializeState(PlayerState newState)
+    public void InitializeState(EntityState newState)
     {
         currentState = newState;
         currentState.EnterState();
     }
 
-    public void ChangeState(PlayerState newState)
+    public void ChangeState(EntityState newState)
     {
         if (currentState != null)
             currentState.ExitState();

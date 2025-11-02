@@ -3,11 +3,10 @@ using UnityEngine.AI;
 
 public class WaypointPatrol : MonoBehaviour
 {
-    private NavMeshAgent navMeshAgent;
+    protected NavMeshAgent navMeshAgent;
 
-    [SerializeField] private Transform[] waypoints;
-
-    private int currentWaypointIndex = 0;
+    [SerializeField] protected Transform[] waypoints;
+    protected int currentWaypointIndex = 0;
 
 
     private void Awake()

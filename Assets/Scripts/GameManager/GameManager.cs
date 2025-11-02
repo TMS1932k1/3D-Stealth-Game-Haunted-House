@@ -27,17 +27,17 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[{name}]: Player is at exit");
 
-        DisablePlayerMovement(player);
+        player.DisableInputManager();
 
         AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.ESCAPE_AUDIO);
         UIManager.instance.ShowWonUI();
     }
 
-    public void OnPlayerCaughted(Player player)
+    public void OnPlayerCaughted(IGetCaught canCaught)
     {
         Debug.Log($"[{name}]: Player is caughted");
 
-        DisablePlayerMovement(player);
+        canCaught.DisableInputManager();
 
         AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.CAUGHT_AUDIO);
         UIManager.instance.ShowCaughtUI();
@@ -52,15 +52,5 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    private void DisablePlayerMovement(Player player)
-    {
-        Player_InputManager input = player.GetComponent<Player_InputManager>();
-
-        if (input == null)
-            return;
-
-        input.DisableMoveInput();
     }
 }
