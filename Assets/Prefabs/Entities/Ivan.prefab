@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4634697354249404994}
   - component: {fileID: 5546950081317116533}
   m_Layer: 0
-  m_Name: Follower
+  m_Name: Ivan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMove: 2
   speedRotation: 15
-  tooltip: {fileID: 8028386617176401945}
+  firstDialogue: {fileID: 11400000, guid: 52b62b85abdc26641987a08fc7204f17, type: 2}
+  dialogueList:
+  - {fileID: 11400000, guid: dd543a1eb389a3c4982171075d728c2e, type: 2}
+  - {fileID: 11400000, guid: 0f0917500a69582428a02b3957bc0e82, type: 2}
+  - {fileID: 11400000, guid: 98d2daf0ae7769d43af8cb9e9dd7b1b9, type: 2}
+  isFirstActive: 1
 --- !u!114 &5546950081317116533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2899109304728635268
 RectTransform:
   m_ObjectHideFlags: 0

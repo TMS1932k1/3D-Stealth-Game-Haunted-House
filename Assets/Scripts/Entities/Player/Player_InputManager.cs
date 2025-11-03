@@ -21,8 +21,13 @@ public class Player_InputManager : MonoBehaviour
         if (input == null)
         {
             input = new Player_InputSystem();
+
+            // Player input
             input.Player.Movement.performed += i => moveInput = i.ReadValue<Vector2>();
-            input.Player.Active.performed += i => player.Active();
+            input.Player.Active.performed += i => player.OnActiveInput();
+            // UI input
+            input.UI.Confirm.performed += i => UIManager.instance.OnConfirmInput();
+            input.UI.Exit.performed += i => UIManager.instance.OnExitInput();
         }
 
         input.Enable();
@@ -33,16 +38,36 @@ public class Player_InputManager : MonoBehaviour
         input.Disable();
     }
 
+    private void Start()
+    {
+        EnablePlayerInput(true);
+    }
+
     private void Update()
     {
         HandleInputValue();
     }
 
-    public void DisableMoveInput()
+    public void EnablePlayerInput(bool enable)
     {
-        Debug.Log($"[{name}]: Disable move input");
-        input.Disable();
-        moveInput = Vector3.zero;
+        if (enable)
+        {
+            Debug.Log($"[{name}]: Enable Player input");
+            input.Player.Enable();
+
+            Debug.Log($"[{name}]: Disable UI input");
+            input.UI.Disable();
+        }
+        else
+        {
+            Debug.Log($"[{name}]: Disable Player input");
+            input.Player.Disable();
+
+            Debug.Log($"[{name}]: Enable UI input");
+            input.UI.Enable();
+
+            moveInput = Vector3.zero;
+        }
     }
 
     private void HandleInputValue()

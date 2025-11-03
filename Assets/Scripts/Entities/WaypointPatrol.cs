@@ -32,4 +32,9 @@ public class WaypointPatrol : MonoBehaviour
             }
         }
     }
+
+    public void EnableMovement(bool enable)
+    {
+        navMeshAgent.isStopped = !enable;
+    }
 }

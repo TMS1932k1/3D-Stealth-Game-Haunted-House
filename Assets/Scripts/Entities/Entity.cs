@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -16,6 +17,16 @@ public class Entity : MonoBehaviour
         audioSource = GetComponentInChildren<AudioSource>();
 
         stateMachine = new StateMachine();
+    }
+
+    protected virtual void OnEnable()
+    {
+
+    }
+
+    protected virtual void OnDisable()
+    {
+
     }
 
     protected virtual void Start()

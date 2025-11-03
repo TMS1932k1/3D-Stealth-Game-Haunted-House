@@ -13,16 +13,13 @@ public class Active_Observer : Observer<IActive>
         activeTarget = null;
     }
 
-    protected override bool ConditionToRayCast() => true;
+    protected override bool ConditionToRayCast() => activeTarget == null;
 
     protected override void OnRayCastHit(IActive target)
     {
-        if (activeTarget == null)
-        {
-            Debug.Log($"[{name}]: Hit active target");
+        Debug.Log($"[{name}]: Hit active target");
 
-            activeTarget = target;
-            activeTarget.ShowTooltip();
-        }
+        activeTarget = target;
+        activeTarget.ShowTooltip();
     }
 }

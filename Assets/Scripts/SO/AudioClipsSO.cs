@@ -16,6 +16,7 @@ public class AudioClipsData
 public class AudioClipsSO : ScriptableObject
 {
     [SerializeField] private List<AudioClipsData> player;
+    [SerializeField] private List<AudioClipsData> ivan;
     [SerializeField] private List<AudioClipsData> enemy;
     [SerializeField] private List<AudioClipsData> ui;
     [SerializeField] private List<AudioClipsData> bgm;
@@ -26,6 +27,7 @@ public class AudioClipsSO : ScriptableObject
     private void OnEnable()
     {
         AddAudioClipsData(player);
+        AddAudioClipsData(ivan);
         AddAudioClipsData(enemy);
         AddAudioClipsData(ui);
         AddAudioClipsData(bgm);

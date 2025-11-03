@@ -17,6 +17,31 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 07e520bb410492d47bf739846d70f2a3, type: 3}
     volume: 1
     isLoop: 1
+  ivan:
+  - nameData: IvanDefault1
+    audioClip: {fileID: 8300000, guid: d069006c3bbdf3b4280a4c39ec6a0666, type: 3}
+    volume: 0.8
+    isLoop: 0
+  - nameData: IvanDefault2
+    audioClip: {fileID: 8300000, guid: 4dd86e9387605f440b68312916e386f8, type: 3}
+    volume: 0.8
+    isLoop: 0
+  - nameData: IvanDefault3
+    audioClip: {fileID: 8300000, guid: 19683b2e943decd489fccf6265df153a, type: 3}
+    volume: 0.8
+    isLoop: 0
+  - nameData: IvanFirst1
+    audioClip: {fileID: 8300000, guid: a18373b1d5f43dd4b8bc25b0b37f901b, type: 3}
+    volume: 0.8
+    isLoop: 0
+  - nameData: IvanFirst2
+    audioClip: {fileID: 8300000, guid: 16eccc7b47b06f14184e4d3a72ee2530, type: 3}
+    volume: 0.8
+    isLoop: 0
+  - nameData: IvanFirst3
+    audioClip: {fileID: 8300000, guid: fe14edab31fd22341af7e00c904a8678, type: 3}
+    volume: 0.8
+    isLoop: 0
   enemy:
   - nameData: Move
     audioClip: {fileID: 8300000, guid: 98ea14dfdb9dce74a976520f134fd1a2, type: 3}

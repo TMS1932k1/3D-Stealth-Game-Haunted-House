@@ -51,7 +51,7 @@ public abstract class Observer<T> : MonoBehaviour
 
     private void HandleRayCast()
     {
-        Vector3 direction = targetTransform.position - transform.position + Vector3.up;
+        Vector3 direction = targetTransform.position - transform.position;
 
         if (Physics.Raycast(transform.position, direction, out RaycastHit raycastHit))
         {

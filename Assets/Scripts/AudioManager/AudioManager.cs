@@ -34,13 +34,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudioClip(AudioSource source, string nameData)
     {
+        AudioClipsData audioClipData = audioClipsSO.GetAudioClipsData(nameData);
+
         if (source == null)
         {
             Debug.LogWarning($"[{name}]: AudioSource is null");
             return;
         }
-
-        AudioClipsData audioClipData = audioClipsSO.GetAudioClipsData(nameData);
 
         if (audioClipData == null)
             return;

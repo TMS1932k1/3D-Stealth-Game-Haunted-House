@@ -22,6 +22,22 @@ public class Player : Entity, IObserver, IGetCaught
         walkState = new Player_WalkState(stateMachine, PlayerAnimationStrings.WALK_ANIM, this);
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        GameManager.OnPauseGame += DisablePlayerInput;
+        GameManager.OnResumeGame += EnablePlayerInput;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        GameManager.OnPauseGame -= DisablePlayerInput;
+        GameManager.OnResumeGame -= EnablePlayerInput;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -29,12 +45,7 @@ public class Player : Entity, IObserver, IGetCaught
         stateMachine.InitializeState(idleState);
     }
 
-    public void DisableInputManager()
-    {
-        inputManager.DisableMoveInput();
-    }
-
-    public void Active()
+    public void OnActiveInput()
     {
         if (activeObserver.activeTarget == null)
         {
@@ -42,8 +53,12 @@ public class Player : Entity, IObserver, IGetCaught
             return;
         }
 
-        activeObserver.activeTarget.Active(this);
+        GameManager.instance.OnPlayerActive(this, activeObserver.activeTarget);
     }
 
     public Transform GetTransform() => transform;
+
+    private void EnablePlayerInput() => inputManager.EnablePlayerInput(true);
+
+    private void DisablePlayerInput() => inputManager.EnablePlayerInput(false);
 }

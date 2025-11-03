@@ -1,9 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static Action OnPauseGame;
+    public static Action OnResumeGame;
+
     public static GameManager instance;
+
+    private Player activePlayer = null;
+    private IActive activeTarget = null;
 
 
     private void Awake()
@@ -27,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[{name}]: Player is at exit");
 
-        player.DisableInputManager();
+        OnPauseGame?.Invoke();
 
         AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.ESCAPE_AUDIO);
         UIManager.instance.ShowWonUI();
@@ -37,10 +44,31 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[{name}]: Player is caughted");
 
-        canCaught.DisableInputManager();
+        OnPauseGame?.Invoke();
 
         AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.CAUGHT_AUDIO);
         UIManager.instance.ShowCaughtUI();
+    }
+
+    public void OnPlayerActive(Player player, IActive target)
+    {
+        activePlayer = player;
+        activeTarget = target;
+
+        CameraManager.instance.StartActive();
+        activeTarget.Active(activePlayer);
+
+        OnPauseGame?.Invoke();
+    }
+
+    public void OnFinishActive()
+    {
+        activePlayer = null;
+        activeTarget = null;
+
+        CameraManager.instance.EndActive();
+
+        OnResumeGame?.Invoke();
     }
 
     public void RestartLevel()
