@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.AMBIENT_AUDIO);
+        AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.MAIN_MENU_AUDIO);
     }
 
     public void OnPlayerExit(Player player)

@@ -67,7 +67,11 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: b763689cade9c97438422ba5778740a0, type: 3}
     volume: 0.5
     isLoop: 0
-  ui: []
+  ui:
+  - nameData: Select
+    audioClip: {fileID: 8300000, guid: 83f1a02421af3e84e83b1b64b9294992, type: 3}
+    volume: 0.8
+    isLoop: 0
   bgm:
   - nameData: Ambient
     audioClip: {fileID: 8300000, guid: 205287722f2b6b64583b86d65fdeeb11, type: 3}
@@ -81,3 +85,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 2789d5ce62baaba4ab1ee8bb172304a6, type: 3}
     volume: 1
     isLoop: 0
+  - nameData: MainMenu
+    audioClip: {fileID: 8300000, guid: 64bd121606a395447a9c72e34c5e2212, type: 3}
+    volume: 0.4
+    isLoop: 1

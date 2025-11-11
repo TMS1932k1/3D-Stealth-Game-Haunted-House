@@ -18,6 +18,13 @@ public class DialogueAnimationStrings
 }
 
 
+public class MainMenuBtnAnimationStrings
+{
+    public const string SELECTED_TRIGGER = "Selected";
+    public const string CANCLE_TRIGGER = "Cancle";
+}
+
+
 public class AudioClipDataNameStrings
 {
     // PLAYER AUDIO
@@ -36,7 +43,6 @@ public class AudioClipDataNameStrings
     public const string IVAN_FIRST3_AUDIO = "IvanFirst3";
 
 
-
     // ENEMY AUDIO
     public const string GHOST_MOVE_AUDIO = "Move";
     public const string EYE_KEEPER_AUDIO = "Keep";
@@ -47,4 +53,9 @@ public class AudioClipDataNameStrings
     public const string AMBIENT_AUDIO = "Ambient";
     public const string ESCAPE_AUDIO = "Escape";
     public const string CAUGHT_AUDIO = "Caught";
+    public const string MAIN_MENU_AUDIO = "MainMenu";
+
+
+    // UI AUDIO
+    public const string SELECT_AUDIO = "Select";
 }

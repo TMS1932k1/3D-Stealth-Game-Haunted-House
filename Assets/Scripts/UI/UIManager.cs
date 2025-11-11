@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void OnExitInput()
+    public void OnBackInput()
     {
         switch (currentUI)
         {
