@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 58466204}
   - component: {fileID: 58466206}
   - component: {fileID: 58466205}
+  - component: {fileID: 58466207}
   m_Layer: 5
   m_Name: BackgroundImage
   m_TagString: Untagged
@@ -196,6 +197,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58466203}
   m_CullTransparentMesh: 1
+--- !u!114 &58466207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58466203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f2903187d4acc488485566d1e9753c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 2022789748}
+  - {fileID: 1135857710}
 --- !u!1 &342682669
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -50, y: 30}
   m_SizeDelta: {x: 696.353, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &678851272
@@ -458,7 +474,7 @@ MonoBehaviour:
     m_Top: 20
     m_Bottom: 20
   m_ChildAlignment: 7
-  m_Spacing: 20
+  m_Spacing: 30
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -543,7 +559,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1065344793}
+      objectReference: {fileID: 58466207}
     - target: {fileID: 2695294537879243585, guid: 7259207c5d3302648a8e69347f72521d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -557,7 +573,7 @@ PrefabInstance:
     - target: {fileID: 2695294537879243585, guid: 7259207c5d3302648a8e69347f72521d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Ui_InputManager, Assembly-CSharp
+      value: MainMenuUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2695294537879243585, guid: 7259207c5d3302648a8e69347f72521d,
         type: 3}
@@ -800,9 +816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220b7ba62239d974c8bec32d537d7b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 2022789748}
-  - {fileID: 1135857710}
 --- !u!114 &1135857710 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2826322195419982454, guid: 7259207c5d3302648a8e69347f72521d,
@@ -1212,7 +1225,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1065344793}
+      objectReference: {fileID: 58466207}
     - target: {fileID: 2695294537879243585, guid: 7259207c5d3302648a8e69347f72521d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1232,6 +1245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnStartBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695294537879243585, guid: 7259207c5d3302648a8e69347f72521d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2695294537879243585, guid: 7259207c5d3302648a8e69347f72521d,
         type: 3}

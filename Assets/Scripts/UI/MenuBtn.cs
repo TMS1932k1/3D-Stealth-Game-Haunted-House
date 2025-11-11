@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MainMenuBtn : MonoBehaviour, IPointerEnterHandler
+public class MenuBtn : MonoBehaviour, IPointerEnterHandler
 {
     private TextMeshProUGUI text;
     private Animator anim;
@@ -47,6 +47,6 @@ public class MainMenuBtn : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        MainMenuUI.instance.SetCurrentIndex(index);
+        GetComponentInParent<MainMenuUI>().SetCurrentIndex(index);
     }
 }

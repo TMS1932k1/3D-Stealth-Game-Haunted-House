@@ -1,18 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public enum EUiType
-{
-    None,
-    Caught,
-    Won,
-    Dialogue,
-}
 
-public class UIManager : MonoBehaviour
+public class IngameUIManager : MonoBehaviour
 {
-    public static UIManager instance;
-    private EUiType currentUI;
+    public static IngameUIManager instance;
+    private EIngameUI currentUI;
 
     [Header("Fade UI")]
     [SerializeField] private CanvasGroup exitCanvasGroup;
@@ -35,24 +28,24 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        currentUI = EUiType.None;
+        currentUI = EIngameUI.None;
     }
 
     public void ShowWonUI()
     {
-        currentUI = EUiType.Won;
+        currentUI = EIngameUI.Won;
         HandleEndLevel(exitCanvasGroup, false);
     }
 
     public void ShowCaughtUI()
     {
-        currentUI = EUiType.Caught;
+        currentUI = EIngameUI.Caught;
         HandleEndLevel(caughtCanvasGroup, true);
     }
 
     public void ShowDialogueUI(DialogueSO dialogueList)
     {
-        currentUI = EUiType.Dialogue;
+        currentUI = EIngameUI.Dialogue;
 
         dialogueCanvasGroup.GetComponent<DialogueUI>().ShowDialogue(dialogueList);
         dialogueAnim.SetTrigger(DialogueAnimationStrings.SHOW_TRIGGER);
@@ -60,7 +53,7 @@ public class UIManager : MonoBehaviour
 
     public void HideDialogueUI()
     {
-        currentUI = EUiType.None;
+        currentUI = EIngameUI.None;
 
         dialogueAnim.SetTrigger(DialogueAnimationStrings.HIDE_TRIGGER);
         GameManager.instance.OnFinishActive();
@@ -70,15 +63,15 @@ public class UIManager : MonoBehaviour
     {
         switch (currentUI)
         {
-            case EUiType.Won:
+            case EIngameUI.Won:
                 exitCanvasGroup.GetComponent<IInputAction>()?.OnConfirmInput();
                 break;
 
-            case EUiType.Caught:
+            case EIngameUI.Caught:
                 caughtCanvasGroup.GetComponent<IInputAction>()?.OnConfirmInput();
                 break;
 
-            case EUiType.Dialogue:
+            case EIngameUI.Dialogue:
                 dialogueCanvasGroup.GetComponent<IInputAction>()?.OnConfirmInput();
                 break;
 
@@ -91,15 +84,15 @@ public class UIManager : MonoBehaviour
     {
         switch (currentUI)
         {
-            case EUiType.Won:
+            case EIngameUI.Won:
                 exitCanvasGroup.GetComponent<IInputAction>()?.OnExitInput();
                 break;
 
-            case EUiType.Caught:
+            case EIngameUI.Caught:
                 caughtCanvasGroup.GetComponent<IInputAction>()?.OnExitInput();
                 break;
 
-            case EUiType.Dialogue:
+            case EIngameUI.Dialogue:
                 dialogueCanvasGroup.GetComponent<IInputAction>()?.OnExitInput();
                 break;
 
@@ -138,6 +131,6 @@ public class UIManager : MonoBehaviour
             GameManager.instance.QuitGame();
         }
 
-        currentUI = EUiType.None;
+        currentUI = EIngameUI.None;
     }
 }

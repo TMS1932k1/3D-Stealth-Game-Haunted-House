@@ -42,7 +42,7 @@ public class DialogueUI : MonoBehaviour, IInputAction
         if (!canInputAction)
             return;
 
-        UIManager.instance.HideDialogueUI();
+        IngameUIManager.instance.HideDialogueUI();
 
         currentDialogueData = null;
         canInputAction = false;

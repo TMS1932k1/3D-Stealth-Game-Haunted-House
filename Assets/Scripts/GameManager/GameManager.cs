@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         OnPauseGame?.Invoke();
 
         AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.ESCAPE_AUDIO);
-        UIManager.instance.ShowWonUI();
+        IngameUIManager.instance.ShowWonUI();
     }
 
     public void OnPlayerCaughted(IGetCaught canCaught)
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         OnPauseGame?.Invoke();
 
         AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.CAUGHT_AUDIO);
-        UIManager.instance.ShowCaughtUI();
+        IngameUIManager.instance.ShowCaughtUI();
     }
 
     public void OnPlayerActive(Player player, IActive target)

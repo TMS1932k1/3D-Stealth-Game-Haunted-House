@@ -26,8 +26,8 @@ public class Player_InputManager : MonoBehaviour
             input.Player.Movement.performed += i => moveInput = i.ReadValue<Vector2>();
             input.Player.Active.performed += i => player.OnActiveInput();
             // UI input
-            input.UI.Confirm.performed += i => UIManager.instance.OnConfirmInput();
-            input.UI.Back.performed += i => UIManager.instance.OnBackInput();
+            input.UI.Confirm.performed += i => IngameUIManager.instance.OnConfirmInput();
+            input.UI.Back.performed += i => IngameUIManager.instance.OnBackInput();
         }
 
         input.Enable();

@@ -72,7 +72,7 @@ public class Npc : Entity, IObserver, IActive
         }
 
         // Code UI to show dialogue
-        UIManager.instance.ShowDialogueUI(dialogueShow);
+        IngameUIManager.instance.ShowDialogueUI(dialogueShow);
         isFirstActive = false;
     }
 

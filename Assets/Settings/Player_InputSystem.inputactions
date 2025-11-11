@@ -165,6 +165,15 @@
             "id": "4e3bc473-34e6-4e42-8bbd-34f92c10a035",
             "actions": [
                 {
+                    "name": "Select",
+                    "type": "PassThrough",
+                    "id": "e8459572-2b4f-4e14-a2da-cf3354bb3141",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Confirm",
                     "type": "Button",
                     "id": "b33b7801-247d-4f8c-8019-d2e4c50d4267",
@@ -178,15 +187,6 @@
                     "type": "Button",
                     "id": "a78cac39-a420-42cd-a7ec-e6797e776423",
                     "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Select",
-                    "type": "PassThrough",
-                    "id": "e8459572-2b4f-4e14-a2da-cf3354bb3141",
-                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -206,8 +206,8 @@
                 },
                 {
                     "name": "",
-                    "id": "7206932f-da33-457f-bfa7-c651c217cad4",
-                    "path": "<Touchscreen>/Press",
+                    "id": "0cb26960-b8df-4ba3-8e0c-d15304c95b26",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

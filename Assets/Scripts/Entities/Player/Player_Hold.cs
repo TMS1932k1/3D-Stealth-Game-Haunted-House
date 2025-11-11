@@ -19,7 +19,7 @@ public class Player_Hold : MonoBehaviour
     public void HoldPickUp(EPickUpType type, DialogueSO dialogue)
     {
         // Code UI to show dialogue
-        UIManager.instance.ShowDialogueUI(dialogue);
+        IngameUIManager.instance.ShowDialogueUI(dialogue);
 
         switch (type)
         {
@@ -36,7 +36,7 @@ public class Player_Hold : MonoBehaviour
 
     public void HoldingPickUp()
     {
-        UIManager.instance.ShowDialogueUI(holdingDialogue);
+        IngameUIManager.instance.ShowDialogueUI(holdingDialogue);
     }
 
     private void HandleHoldSaltJar()
