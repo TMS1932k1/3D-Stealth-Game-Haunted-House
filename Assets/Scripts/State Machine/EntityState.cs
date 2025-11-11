@@ -7,7 +7,7 @@ public abstract class EntityState
     protected Entity entity;
 
     protected Rigidbody rb;
-    private Animator anim;
+    protected Animator anim;
 
 
     public EntityState(StateMachine stateMachine, string nameState, Entity entity)

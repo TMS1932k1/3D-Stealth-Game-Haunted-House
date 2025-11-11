@@ -4,7 +4,12 @@ public class PlayerAnimationStrings
 {
     public const string IDLE_ANIM = "IsIdle";
     public const string WALK_ANIM = "IsWalk";
+    public const string HOLD_ANIM = "IsHold";
+    public const string HOLD_IDLE_ANIM = "IsHoldIdle";
+    public const string HOLD_WALK_ANIM = "IsHoldWalk";
+    public const string THROW_TRIGGER = "Throw";
 }
+
 
 public class DialogueAnimationStrings
 {
@@ -17,6 +22,9 @@ public class AudioClipDataNameStrings
 {
     // PLAYER AUDIO
     public const string FOOTSTEPS_AUDIO = "Footsteps";
+    public const string SALTJAR_1_AUDIO = "SaltJar1";
+    public const string SALTJAR_2_AUDIO = "SaltJar2";
+    public const string FULLHAND_AUDIO = "FullHand";
 
 
     // IVAN AUDIO
@@ -30,7 +38,9 @@ public class AudioClipDataNameStrings
 
 
     // ENEMY AUDIO
-    public const string MOVE_AUDIO = "Move";
+    public const string GHOST_MOVE_AUDIO = "Move";
+    public const string EYE_KEEPER_AUDIO = "Keep";
+    public const string ENEMY_DEATH_AUDIO = "Death";
 
 
     // BGM AUDIO

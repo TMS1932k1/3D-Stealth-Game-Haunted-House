@@ -1,16 +1,22 @@
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
 
-    private WaypointPatrol waypointPatrol;
+    private Enemy_VFX enemyVFX;
+    private CapsuleCollider cd;
+    private NavMeshAgent navMeshAgent;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         audioSource = GetComponentInChildren<AudioSource>();
-        waypointPatrol = GetComponentInChildren<WaypointPatrol>();
+
+        enemyVFX = GetComponent<Enemy_VFX>();
+        cd = GetComponent<CapsuleCollider>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void OnEnable()
@@ -25,18 +31,40 @@ public class Enemy : MonoBehaviour
         GameManager.OnResumeGame -= EnableMovement;
     }
 
-    private void Start()
+    protected virtual void Start() { }
+
+    protected virtual void Update() { }
+
+    public void DismissBySaltJar()
     {
-        AudioManager.instance.PlayAudioClip(audioSource, AudioClipDataNameStrings.MOVE_AUDIO);
+        Debug.Log($"[{name}]: Dismiss this enemy by Salt Jar");
+
+        HandleDismiss();
     }
 
-    public void EnableMovement()
+    private void HandleDismiss()
     {
-        waypointPatrol.EnableMovement(true);
+        // Dismiss movement
+        DisableMovement();
+
+        // Disable collider
+        cd.enabled = false;
+        navMeshAgent.enabled = false;
+
+        // Show VFX and SFX Dismiss
+        enemyVFX.PlayDismissVFX();
+        AudioManager.instance.PlayAudioClip(audioSource, AudioClipDataNameStrings.ENEMY_DEATH_AUDIO);
+
+        // Hide enemy after 2s
+        Invoke(nameof(HideEnemy), 2f);
     }
 
-    public void DisableMovement()
+    private void HideEnemy()
     {
-        waypointPatrol.EnableMovement(false);
+        gameObject.SetActive(false);
     }
+
+    protected abstract void EnableMovement();
+
+    protected abstract void DisableMovement();
 }

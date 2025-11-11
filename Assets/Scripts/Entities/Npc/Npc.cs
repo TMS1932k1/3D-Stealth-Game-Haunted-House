@@ -5,9 +5,10 @@ using UnityEngine;
 public class Npc : Entity, IObserver, IActive
 {
     [Header("NPC")]
+    [SerializeField] private bool isFirstActive = true;
+    [Space]
     [SerializeField] private DialogueSO firstDialogue;
     [SerializeField] private List<DialogueSO> dialogueList;
-    [SerializeField] private bool isFirstActive = true;
 
     private TextMeshProUGUI tooltip;
     protected bool canActive = true;
@@ -48,14 +49,16 @@ public class Npc : Entity, IObserver, IActive
     ///  - Handle logic of npc in children class
     /// </summary>
     /// <param name="player"></param>
-    public virtual void Active(Player player)
+    public virtual void Active(Player player, out bool successActive)
     {
+        successActive = true;
+
         if (!canActive)
         {
-            Debug.Log($"[{name}]: Player can't active NPC {name}!");
+            Debug.Log($"[{name}]: Now player can't active NPC {name}!");
+            successActive = false;
             return;
         }
-        canActive = false; // Avoid active in Dialogue is processing
 
         Debug.Log($"[{name}]: Player active NPC {name}");
 
@@ -64,6 +67,7 @@ public class Npc : Entity, IObserver, IActive
         if (dialogueShow == null)
         {
             Debug.LogWarning($"[{name}]: Dialogue list is null or empty");
+            successActive = false;
             return;
         }
 
@@ -95,7 +99,8 @@ public class Npc : Entity, IObserver, IActive
 
     protected virtual void OnPauseGame()
     {
-
+        tooltip.gameObject.SetActive(false);
+        canActive = false; // Avoid active in Dialogue is processing
     }
 
     protected virtual void OnResumeGame()

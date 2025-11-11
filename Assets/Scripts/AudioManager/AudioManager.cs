@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
         PlayAudioClip(ui, nameData);
     }
 
-    public void PlayAudioClip(AudioSource source, string nameData)
+    public void PlayAudioClip(AudioSource source, string nameData, float pitch = 1)
     {
         AudioClipsData audioClipData = audioClipsSO.GetAudioClipsData(nameData);
 
@@ -46,6 +46,7 @@ public class AudioManager : MonoBehaviour
             return;
 
         source.Stop();
+        source.pitch = pitch;
         source.loop = audioClipData.isLoop;
         source.volume = audioClipData.volume;
         source.clip = audioClipData.audioClip;

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -6,6 +5,8 @@ public class Entity : MonoBehaviour
     [Header("Movement")]
     [SerializeField] public float speedMove;
     [SerializeField] public float speedRotation;
+    [Range(0, 1)]
+    [SerializeField] public float holdMutiplier = 0.7f;
 
     public StateMachine stateMachine { get; protected set; }
 

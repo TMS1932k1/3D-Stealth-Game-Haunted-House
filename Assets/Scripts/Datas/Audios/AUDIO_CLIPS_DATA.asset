@@ -17,6 +17,18 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 07e520bb410492d47bf739846d70f2a3, type: 3}
     volume: 1
     isLoop: 1
+  - nameData: SaltJar1
+    audioClip: {fileID: 8300000, guid: d219f60824d679942b37bc01e2722d48, type: 3}
+    volume: 0.8
+    isLoop: 0
+  - nameData: SaltJar2
+    audioClip: {fileID: 8300000, guid: 3f1dbda37e5ff6a44a6ee94636b09db5, type: 3}
+    volume: 0.8
+    isLoop: 0
+  - nameData: FullHand
+    audioClip: {fileID: 8300000, guid: bd5063946ab3e2140b3c78085d7cbdcc, type: 3}
+    volume: 0.8
+    isLoop: 0
   ivan:
   - nameData: IvanDefault1
     audioClip: {fileID: 8300000, guid: d069006c3bbdf3b4280a4c39ec6a0666, type: 3}
@@ -47,6 +59,14 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 98ea14dfdb9dce74a976520f134fd1a2, type: 3}
     volume: 0.4
     isLoop: 1
+  - nameData: Keep
+    audioClip: {fileID: 8300000, guid: 39a4ab459ccd13e48849222ad6c3e7a5, type: 3}
+    volume: 0.6
+    isLoop: 1
+  - nameData: Death
+    audioClip: {fileID: 8300000, guid: b763689cade9c97438422ba5778740a0, type: 3}
+    volume: 0.5
+    isLoop: 0
   ui: []
   bgm:
   - nameData: Ambient

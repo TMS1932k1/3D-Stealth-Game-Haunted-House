@@ -99,7 +99,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 2
+  m_Speed: 1.8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -125,12 +125,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMove: 2
   speedRotation: 15
+  holdMutiplier: 0
+  isFirstActive: 1
   firstDialogue: {fileID: 11400000, guid: 52b62b85abdc26641987a08fc7204f17, type: 2}
   dialogueList:
   - {fileID: 11400000, guid: dd543a1eb389a3c4982171075d728c2e, type: 2}
   - {fileID: 11400000, guid: 0f0917500a69582428a02b3957bc0e82, type: 2}
   - {fileID: 11400000, guid: 98d2daf0ae7769d43af8cb9e9dd7b1b9, type: 2}
-  isFirstActive: 1
 --- !u!114 &5546950081317116533
 MonoBehaviour:
   m_ObjectHideFlags: 0

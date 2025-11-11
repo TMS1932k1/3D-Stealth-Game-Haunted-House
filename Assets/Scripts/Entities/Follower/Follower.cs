@@ -25,10 +25,9 @@ public class Follower : Npc, IGetCaught
         stateMachine.InitializeState(idleState);
     }
 
-    public override void Active(Player player)
+    public override void Active(Player player, out bool successActive)
     {
-        base.Active(player);
-
+        base.Active(player, out successActive);
         followerMovement.AddFollowTarget(player.transform);
     }
 
@@ -43,4 +42,7 @@ public class Follower : Npc, IGetCaught
         base.OnResumeGame();
         followerMovement.EnableMovement(true);
     }
+
+    public bool HaveSaltJar() => false; // Npc can't hold salt jar
+    public void DismissSaltJar() { } // Npc can't hold salt jar
 }

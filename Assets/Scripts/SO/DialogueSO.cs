@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueSO : ScriptableObject
 {
     public string nameSpeaker;
+    [TextArea]
     public string dialogue;
     public string nameAudioClipData;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_IdleState : PlayerState
+public class Player_IdleState : Player_NormalState
 {
     public Player_IdleState(StateMachine stateMachine, string nameState, Player player) : base(stateMachine, nameState, player)
     {
@@ -17,7 +17,7 @@ public class Player_IdleState : PlayerState
     {
         base.UpdateState();
 
-        if (player.inputManager.IsWalking())
+        if (inputManager.IsWalking())
         {
             stateMachine.ChangeState(player.walkState);
         }

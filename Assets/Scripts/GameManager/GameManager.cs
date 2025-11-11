@@ -55,10 +55,13 @@ public class GameManager : MonoBehaviour
         activePlayer = player;
         activeTarget = target;
 
-        CameraManager.instance.StartActive();
-        activeTarget.Active(activePlayer);
+        activeTarget.Active(activePlayer, out bool successActive);
 
-        OnPauseGame?.Invoke();
+        if (successActive)
+        {
+            CameraManager.instance.StartActive();
+            OnPauseGame?.Invoke();
+        }
     }
 
     public void OnFinishActive()

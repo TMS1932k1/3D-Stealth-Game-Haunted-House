@@ -23,7 +23,7 @@ public class WaypointPatrol : MonoBehaviour
 
     private void Update()
     {
-        if (waypoints != null && waypoints.Count > 0)
+        if (waypoints != null && waypoints.Count > 0 && navMeshAgent.enabled)
         {
             if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
             {
