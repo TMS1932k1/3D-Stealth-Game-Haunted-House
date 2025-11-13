@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a303d526431c644942060ce015e42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idTarget: Ivan
   speedMove: 2
   speedRotation: 15
   holdMutiplier: 0

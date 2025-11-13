@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ba294848b874f458b392c6cd5c004f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idTarget: Player
   speedMove: 1.8
   speedRotation: 15
   holdMutiplier: 0.6

@@ -18,7 +18,7 @@ public class DialogueAnimationStrings
 }
 
 
-public class MainMenuBtnAnimationStrings
+public class BtnAnimationStrings
 {
     public const string SELECTED_TRIGGER = "Selected";
     public const string CANCLE_TRIGGER = "Cancle";

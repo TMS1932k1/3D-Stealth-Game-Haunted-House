@@ -1,13 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameEnding : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Player player = other.GetComponent<Player>();
-        if (player != null)
+        if (GameManager.instance.CheckLevelCondition())
         {
-            GameManager.instance.OnPlayerExit(player);
+            Player player = other.GetComponent<Player>();
+            if (player != null)
+            {
+                GameManager.instance.OnPlayerExit(player);
+            }
         }
     }
 }

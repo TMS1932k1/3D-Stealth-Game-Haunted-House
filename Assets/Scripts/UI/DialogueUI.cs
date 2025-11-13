@@ -17,8 +17,9 @@ public class DialogueUI : MonoBehaviour, IInputAction
             return;
         }
 
+        // Set text display
         currentDialogueData = dialogueData;
-        dialogueText.text = $"{dialogueData.nameSpeaker}\n{dialogueData.dialogue}";
+        dialogueText.text = $"{dialogueData.nameSpeaker}:\n{dialogueData.dialogue}";
     }
 
     public void OnConfirmInput()

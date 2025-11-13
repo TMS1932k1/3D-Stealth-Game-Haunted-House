@@ -3,10 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MenuBtn : MonoBehaviour, IPointerEnterHandler
+public class MenuBtn : BtnUI
 {
     private TextMeshProUGUI text;
-    private Animator anim;
     private int index;
     public bool isSelected { get; private set; }
 
@@ -14,8 +13,10 @@ public class MenuBtn : MonoBehaviour, IPointerEnterHandler
     [SerializeField] private Color selectedColor = Color.yellow;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         text = GetComponentInChildren<TextMeshProUGUI>();
         anim = GetComponent<Animator>();
     }
@@ -26,7 +27,7 @@ public class MenuBtn : MonoBehaviour, IPointerEnterHandler
         text.color = defaultColor;
         text.fontStyle = FontStyles.Normal;
 
-        anim.SetTrigger(MainMenuBtnAnimationStrings.CANCLE_TRIGGER);
+        anim.SetTrigger(BtnAnimationStrings.CANCLE_TRIGGER);
     }
 
     public void SetSelectedBtn()
@@ -35,7 +36,7 @@ public class MenuBtn : MonoBehaviour, IPointerEnterHandler
         text.color = selectedColor;
         text.fontStyle = FontStyles.Bold;
 
-        anim.SetTrigger(MainMenuBtnAnimationStrings.SELECTED_TRIGGER);
+        anim.SetTrigger(BtnAnimationStrings.SELECTED_TRIGGER);
     }
 
     public void OnConfirnBtn()
@@ -45,8 +46,10 @@ public class MenuBtn : MonoBehaviour, IPointerEnterHandler
 
     public void SetIndexBtn(int index) => this.index = index;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void OnPointerEnter(PointerEventData eventData)
     {
         GetComponentInParent<MainMenuUI>().SetCurrentIndex(index);
     }
+
+    public override void OnPointerExit(PointerEventData eventData) { }
 }

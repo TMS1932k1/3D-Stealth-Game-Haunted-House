@@ -46,7 +46,9 @@ public class MainMenuUI : MonoBehaviour
     public void OnStartBtn()
     {
         Debug.Log($"[{name}]: Onclick start button");
+
         AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SELECT_AUDIO);
+        MainMenuUIManager.instance.ShowSelectLevelUI();
     }
 
     public void OnSettingBtn()

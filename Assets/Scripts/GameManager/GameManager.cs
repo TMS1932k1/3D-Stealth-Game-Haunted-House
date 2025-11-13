@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    // Level list
+    [SerializeField] private LevelListSO levelListData;
+    public int passedLevelIndex { get; private set; } = -1;
+
+
+    // Active player
     private Player activePlayer = null;
     private IActive activeTarget = null;
 
@@ -84,4 +90,11 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public bool CheckLevelCondition()
+    {
+        return true;
+    }
+
+    public int GetIndexOfLevelItem(LevelSO levelData) => levelListData.levels.IndexOf(levelData);
 }

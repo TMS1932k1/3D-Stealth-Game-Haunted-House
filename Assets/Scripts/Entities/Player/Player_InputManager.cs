@@ -27,6 +27,7 @@ public class Player_InputManager : MonoBehaviour
             input.Player.Active.performed += i => player.OnActiveInput();
             // UI input
             input.UI.Confirm.performed += i => IngameUIManager.instance.OnConfirmInput();
+            input.UI.Dialogue.performed += i => IngameUIManager.instance.OnConfirmInput();
             input.UI.Back.performed += i => IngameUIManager.instance.OnBackInput();
         }
 

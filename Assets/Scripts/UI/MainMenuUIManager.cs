@@ -6,10 +6,12 @@ public class MainMenuUIManager : MonoBehaviour
 {
     public static MainMenuUIManager instance;
 
-    private MainMenuUI mainMenuUI;
-
     private Player_InputSystem input;
     private EMainMenuUI currentUI = EMainMenuUI.None;
+
+    // UI Components
+    private MainMenuUI mainMenuUI;
+    private LevelSelectUI levelSelectUI;
 
 
     private void Awake()
@@ -17,6 +19,7 @@ public class MainMenuUIManager : MonoBehaviour
         instance = this;
 
         mainMenuUI = GetComponentInChildren<MainMenuUI>();
+        levelSelectUI = GetComponentInChildren<LevelSelectUI>();
     }
 
     private void OnEnable()
@@ -95,11 +98,11 @@ public class MainMenuUIManager : MonoBehaviour
         switch (currentUI)
         {
             case EMainMenuUI.Setting:
-
                 break;
 
             case EMainMenuUI.Level:
-
+                currentUI = EMainMenuUI.MainMenu;
+                levelSelectUI.OnBackInput();
                 break;
 
             default:
@@ -107,4 +110,9 @@ public class MainMenuUIManager : MonoBehaviour
         }
     }
 
+    public void ShowSelectLevelUI()
+    {
+        currentUI = EMainMenuUI.Level;
+        levelSelectUI.ShowLevelSelectUI();
+    }
 }

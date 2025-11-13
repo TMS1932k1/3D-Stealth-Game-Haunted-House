@@ -473,6 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32384ec56aee5b04599754be19752ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idTarget: SaltJar
   dialogue: {fileID: 11400000, guid: 7b2c77cf8f98da148864fe04917898cb, type: 2}
   pickUpType: 1
 --- !u!1001 &2139434596353769985

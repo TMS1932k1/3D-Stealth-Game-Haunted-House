@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    [SerializeField] private string idTarget;
+
     [Header("Movement")]
     [SerializeField] public float speedMove;
     [SerializeField] public float speedRotation;

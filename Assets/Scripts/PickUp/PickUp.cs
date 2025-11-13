@@ -10,6 +10,8 @@ public enum EPickUpType
 
 public class PickUp : MonoBehaviour, IObserver, IActive
 {
+    [SerializeField] private string idTarget;
+
     [SerializeField] private DialogueSO dialogue;
     [SerializeField] protected EPickUpType pickUpType;
 

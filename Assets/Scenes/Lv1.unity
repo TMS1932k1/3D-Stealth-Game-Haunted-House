@@ -1449,7 +1449,7 @@ PrefabInstance:
     - target: {fileID: 698999307210500271, guid: baa1308c21226db40a57a142db3e2308,
         type: 3}
       propertyPath: m_Name
-      value: UIManager
+      value: IngameUIManager
       objectReference: {fileID: 0}
     - target: {fileID: 5248372256151097885, guid: baa1308c21226db40a57a142db3e2308,
         type: 3}
@@ -1776,7 +1776,7 @@ PrefabInstance:
     - target: {fileID: 623531988326850922, guid: df6c6bf4a13d0f748866b033b3df9bf8,
         type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 59.99995
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5222193784746343619, guid: df6c6bf4a13d0f748866b033b3df9bf8,
         type: 3}
@@ -1786,7 +1786,7 @@ PrefabInstance:
     - target: {fileID: 8219945157823277906, guid: df6c6bf4a13d0f748866b033b3df9bf8,
         type: 3}
       propertyPath: field of view
-      value: 59.99995
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

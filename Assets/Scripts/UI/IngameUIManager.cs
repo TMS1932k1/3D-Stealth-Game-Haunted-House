@@ -10,8 +10,8 @@ public class IngameUIManager : MonoBehaviour
     [Header("Fade UI")]
     [SerializeField] private CanvasGroup exitCanvasGroup;
     [SerializeField] private CanvasGroup caughtCanvasGroup;
-    [SerializeField] public float fadeDuration = 1f;
-    [SerializeField] public float displayImageDuration = 1f;
+    [SerializeField] private float fadeDuration = 1f;
+    [SerializeField] private float displayImageDuration = 1f;
     private Coroutine showEndLevelCoroutine;
 
     [Header("Dialogue UI")]
