@@ -7,10 +7,14 @@ public class LevelSelectUI : MonoBehaviour
     private CanvasGroup cg;
     private Coroutine displayUICoroutine;
 
+    private LevelItemUI[] levelItemUIs;
+    private int currentLevelIndex = 0;
+
 
     private void Awake()
     {
         cg = GetComponent<CanvasGroup>();
+        levelItemUIs = GetComponentsInChildren<LevelItemUI>();
     }
 
     private void Start()
@@ -18,17 +22,80 @@ public class LevelSelectUI : MonoBehaviour
         cg.alpha = 0;
         cg.blocksRaycasts = false;
         cg.interactable = false;
+
+        DisplayLevelItems();
     }
 
-    public void ShowLevelSelectUI()
+    public void OnSelectInput(Vector2 selectInput)
     {
-        HandleShowUI(cg);
+        int calculateIndex = currentLevelIndex;
+
+        if (selectInput.y != 0)
+        {
+            int direction = (int)-Mathf.Sign(selectInput.y);
+            calculateIndex = (calculateIndex + direction * 3 + levelItemUIs.Length) % levelItemUIs.Length;
+        }
+        else if (selectInput.x != 0)
+        {
+            int direction = (int)Mathf.Sign(selectInput.x);
+            calculateIndex = (calculateIndex + direction + levelItemUIs.Length) % levelItemUIs.Length;
+        }
+
+        if (calculateIndex <= GameManager.instance.passedLevelIndex + 1)
+        {
+            currentLevelIndex = calculateIndex;
+            DisplayLevelItems();
+        }
     }
 
     public void OnBackInput()
     {
         AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SELECT_AUDIO);
+        SetCurrentIndex(0);
         HandleHideUI(cg);
+    }
+
+    public void OnConfirmInput()
+    {
+        if (currentLevelIndex > GameManager.instance.passedLevelIndex + 1)
+        {
+            Debug.Log($"[{name}]: Level isn't actived");
+            return;
+        }
+
+        Debug.Log($"[{name}]: Player selected {name}");
+        AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SELECT_AUDIO);
+
+        MainMenuUIManager.instance.ShowFadeLoadUI();
+        Invoke(nameof(LoadToLevel), 1f); // Should after fade duration = 0.5s
+    }
+
+    private void LoadToLevel()
+    {
+        GameManager.instance.LoadToLevel(levelItemUIs[currentLevelIndex].levelData);
+    }
+
+    private void DisplayLevelItems()
+    {
+        for (int i = 0; i < levelItemUIs.Length; i++)
+        {
+            if (i == currentLevelIndex && levelItemUIs[i].isSelected == false)
+                levelItemUIs[i].SetSelectedBtn();
+
+            if (i != currentLevelIndex && levelItemUIs[i].isSelected == true)
+                levelItemUIs[i].SetDefaultBtn();
+        }
+    }
+
+    public void SetCurrentIndex(int index)
+    {
+        currentLevelIndex = index;
+        DisplayLevelItems();
+    }
+
+    public void ShowLevelSelectUI()
+    {
+        HandleShowUI(cg);
     }
 
     private void HandleShowUI(CanvasGroup canvasGroup)

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +20,12 @@ public class DialogueUI : MonoBehaviour, IInputAction
 
         // Set text display
         currentDialogueData = dialogueData;
-        dialogueText.text = $"{dialogueData.nameSpeaker}:\n{dialogueData.dialogue}";
+
+        dialogueText.text = "";
+        if (!String.IsNullOrEmpty(currentDialogueData.nameSpeaker))
+            dialogueText.text = $"{currentDialogueData.nameSpeaker}:\n";
+
+        dialogueText.text += $"{currentDialogueData.dialogue}";
     }
 
     public void OnConfirmInput()

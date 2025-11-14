@@ -6,4 +6,5 @@ public enum EMainMenuUI
     MainMenu,
     Level,
     Setting,
+    Load,
 }

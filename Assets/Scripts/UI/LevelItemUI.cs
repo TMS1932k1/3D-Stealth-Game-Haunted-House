@@ -1,20 +1,27 @@
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LevelItemUI : BtnUI
 {
-    [SerializeField] private LevelSO levelData;
+    public LevelSO levelData;
 
-    [Space]
+    [Header("UI Components")]
     [SerializeField] private TextMeshProUGUI nametext;
-    [SerializeField] private Image passImage;
+    [SerializeField] private TextMeshProUGUI passText;
+
+    [Header("Color")]
     [SerializeField] private Color activeColor = Color.white;
     [SerializeField] private Color lockColor = Color.gray;
 
     private Image borderImage;
+    private Button button;
 
-    private int index = -1;
+    public bool isSelected { get; private set; }
+    private bool canActive;
+    private int index;
 
 
     protected override void Awake()
@@ -22,6 +29,7 @@ public class LevelItemUI : BtnUI
         base.Awake();
 
         borderImage = GetComponent<Image>();
+        button = GetComponent<Button>();
     }
 
     private void Start()
@@ -32,10 +40,36 @@ public class LevelItemUI : BtnUI
 
     private void SetDisplayLevelItem()
     {
-        nametext.color = index <= GameManager.instance.passedLevelIndex + 1 ? activeColor : lockColor;
-        borderImage.color = index <= GameManager.instance.passedLevelIndex + 1 ? activeColor : lockColor;
-        passImage.gameObject.SetActive(index <= GameManager.instance.passedLevelIndex);
+        canActive = index <= GameManager.instance.passedLevelIndex + 1;
+
+        nametext.color = canActive ? activeColor : lockColor;
+        borderImage.color = canActive ? activeColor : lockColor;
+        passText.gameObject.SetActive(index <= GameManager.instance.passedLevelIndex);
+        button.enabled = canActive;
     }
+
+    public void SetSelectedBtn()
+    {
+        isSelected = true;
+
+        anim.SetTrigger(BtnAnimationStrings.SELECTED_TRIGGER);
+    }
+
+    public void SetDefaultBtn()
+    {
+        isSelected = false;
+        anim.SetTrigger(BtnAnimationStrings.CANCLE_TRIGGER);
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!canActive)
+            return;
+
+        GetComponentInParent<LevelSelectUI>().SetCurrentIndex(index);
+    }
+
+    public override void OnPointerExit(PointerEventData eventData) { }
 
     private void OnValidate()
     {

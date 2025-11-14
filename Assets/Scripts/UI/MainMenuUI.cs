@@ -29,10 +29,11 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnSelectInput(Vector2 selectInput)
     {
-        if (selectInput.y == 1)
-            currentButtonIndex = Mathf.Abs((currentButtonIndex + 1) % buttons.Count);
-        else if (selectInput.y == -1)
-            currentButtonIndex = Mathf.Abs((currentButtonIndex - 1) % buttons.Count);
+        if (selectInput.y != 0)
+        {
+            int direction = (int)-Mathf.Sign(selectInput.y);
+            currentButtonIndex = (currentButtonIndex + direction + buttons.Count) % buttons.Count;
+        }
 
         DisplayMainMenuBtns();
     }

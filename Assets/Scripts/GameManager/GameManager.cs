@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
 
     // Level list
     [SerializeField] private LevelListSO levelListData;
-    public int passedLevelIndex { get; private set; } = -1;
-
+    private LevelSO currentLevelData = null;
+    public int passedLevelIndex { get; private set; } = 3;
 
     // Active player
     private Player activePlayer = null;
@@ -80,9 +80,18 @@ public class GameManager : MonoBehaviour
         OnResumeGame?.Invoke();
     }
 
+    public void LoadToLevel(LevelSO levelData)
+    {
+        currentLevelData = levelData;
+        AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.AMBIENT_AUDIO);
+        SceneManager.LoadScene(currentLevelData.nameScene);
+
+        Debug.Log($"[{name}]: Load to scene ({levelData.nameScene})");
+    }
+
     public void RestartLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(currentLevelData.nameScene);
         AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.AMBIENT_AUDIO);
     }
 

@@ -12,6 +12,7 @@ public class MainMenuUIManager : MonoBehaviour
     // UI Components
     private MainMenuUI mainMenuUI;
     private LevelSelectUI levelSelectUI;
+    private FadeLoadUI fadeLoadUI;
 
 
     private void Awake()
@@ -20,6 +21,7 @@ public class MainMenuUIManager : MonoBehaviour
 
         mainMenuUI = GetComponentInChildren<MainMenuUI>();
         levelSelectUI = GetComponentInChildren<LevelSelectUI>();
+        fadeLoadUI = GetComponentInChildren<FadeLoadUI>();
     }
 
     private void OnEnable()
@@ -64,7 +66,7 @@ public class MainMenuUIManager : MonoBehaviour
                 break;
 
             case EMainMenuUI.Level:
-
+                levelSelectUI.OnSelectInput(selectInput);
                 break;
 
             default:
@@ -85,7 +87,7 @@ public class MainMenuUIManager : MonoBehaviour
                 break;
 
             case EMainMenuUI.Level:
-
+                levelSelectUI.OnConfirmInput();
                 break;
 
             default:
@@ -114,5 +116,12 @@ public class MainMenuUIManager : MonoBehaviour
     {
         currentUI = EMainMenuUI.Level;
         levelSelectUI.ShowLevelSelectUI();
+    }
+
+    public void ShowFadeLoadUI()
+    {
+        Debug.Log("Fade");
+        currentUI = EMainMenuUI.Load;
+        fadeLoadUI.ShowFadeLoadUI();
     }
 }
