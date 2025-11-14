@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     // Level list
     [SerializeField] private LevelListSO levelListData;
     private LevelSO currentLevelData = null;
-    public int passedLevelIndex { get; private set; } = 3;
+    public int passedLevelIndex { get; private set; } = 6; // 8
 
     // Active player
     private Player activePlayer = null;

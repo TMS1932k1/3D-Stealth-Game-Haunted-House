@@ -186,6 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 0.5
+  pageStep: {x: 1500, y: 0, z: 0}
+  levelPagesRect: {fileID: 9078688251156896517}
+  maxPages: 2
+  swipeDuration: 0.3
 --- !u!1 &2770355824208884821
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +296,7 @@ GameObject:
   - component: {fileID: 1164026228683178514}
   - component: {fileID: 5857371742254455637}
   - component: {fileID: 8461570841218835444}
+  - component: {fileID: 7638537060744188371}
   m_Layer: 5
   m_Name: ScrollView
   m_TagString: Untagged
@@ -400,6 +405,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7638537060744188371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070731702459058104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab2efece4046e24db460c36bb5bc178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3477811345439632607
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,8 +837,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 250, y: 250}
   m_Spacing: {x: 100, y: 80}
-  m_Constraint: 2
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 3
 --- !u!1 &4927821114683744006
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +960,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8527536398946419577}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4203012658467017163}
+        m_TargetAssemblyTypeName: LevelSelectUI, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5324856430556763000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,8 +1080,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 250, y: 250}
   m_Spacing: {x: 100, y: 80}
-  m_Constraint: 2
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 3
 --- !u!1 &6653635960430852588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1450.0002, y: 0.000030518}
+  m_AnchoredPosition: {x: 1450, y: 4.2201e-10}
   m_SizeDelta: {x: 0, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7612636347750247598
@@ -1253,7 +1282,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2533777955541256570}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4203012658467017163}
+        m_TargetAssemblyTypeName: LevelSelectUI, Assembly-CSharp
+        m_MethodName: PreviousPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7925585999788349925
 MonoBehaviour:
   m_ObjectHideFlags: 0

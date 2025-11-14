@@ -34,6 +34,8 @@ public class MainMenuUIManager : MonoBehaviour
             input.UI.Select.performed += i => OnSelectInput(i.ReadValue<Vector2>());
             input.UI.Confirm.performed += i => OnConfirnInput();
             input.UI.Back.performed += i => OnBackInput();
+            input.UI.Next.performed += i => OnRightShoulderInput();
+            input.UI.Previous.performed += i => OnLeftShoulderInput();
         }
 
         input.Enable();
@@ -105,6 +107,38 @@ public class MainMenuUIManager : MonoBehaviour
             case EMainMenuUI.Level:
                 currentUI = EMainMenuUI.MainMenu;
                 levelSelectUI.OnBackInput();
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    private void OnLeftShoulderInput()
+    {
+        switch (currentUI)
+        {
+            case EMainMenuUI.Setting:
+                break;
+
+            case EMainMenuUI.Level:
+                levelSelectUI.PreviousPage();
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    private void OnRightShoulderInput()
+    {
+        switch (currentUI)
+        {
+            case EMainMenuUI.Setting:
+                break;
+
+            case EMainMenuUI.Level:
+                levelSelectUI.NextPage();
                 break;
 
             default:

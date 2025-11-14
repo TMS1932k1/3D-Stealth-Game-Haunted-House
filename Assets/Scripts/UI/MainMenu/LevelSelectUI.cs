@@ -1,11 +1,22 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LevelSelectUI : MonoBehaviour
 {
     [SerializeField] private float fadeDuration = 1f;
     private CanvasGroup cg;
     private Coroutine displayUICoroutine;
+
+    [Header("Swipe details")]
+    [SerializeField] private Vector3 pageStep;
+    [SerializeField] private RectTransform levelPagesRect;
+    [SerializeField] private int maxPages;
+    [SerializeField] private float swipeDuration = 0.3f;
+    private Vector3 originalStep;
+    private Vector3 targetStep;
+    private int currentPage = 1;
 
     private LevelItemUI[] levelItemUIs;
     private int currentLevelIndex = 0;
@@ -22,6 +33,9 @@ public class LevelSelectUI : MonoBehaviour
         cg.alpha = 0;
         cg.blocksRaycasts = false;
         cg.interactable = false;
+
+        targetStep = levelPagesRect.transform.position;
+        originalStep = levelPagesRect.transform.position;
 
         DisplayLevelItems();
     }
@@ -41,7 +55,10 @@ public class LevelSelectUI : MonoBehaviour
             calculateIndex = (calculateIndex + direction + levelItemUIs.Length) % levelItemUIs.Length;
         }
 
-        if (calculateIndex <= GameManager.instance.passedLevelIndex + 1)
+        if (calculateIndex <= GameManager.instance.passedLevelIndex + 1
+            && calculateIndex < levelItemUIs.Length
+            && calculateIndex < currentPage * 6
+            && calculateIndex >= (currentPage - 1) * 6)
         {
             currentLevelIndex = calculateIndex;
             DisplayLevelItems();
@@ -51,7 +68,13 @@ public class LevelSelectUI : MonoBehaviour
     public void OnBackInput()
     {
         AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SELECT_AUDIO);
+
+        // Reset page
+        ResetPage();
+
+        // Reset index
         SetCurrentIndex(0);
+
         HandleHideUI(cg);
     }
 
@@ -91,6 +114,52 @@ public class LevelSelectUI : MonoBehaviour
     {
         currentLevelIndex = index;
         DisplayLevelItems();
+    }
+
+    private void ResetPage()
+    {
+        currentPage = 1;
+        targetStep = originalStep;
+        MovePage();
+    }
+
+    public void NextPage()
+    {
+        if (currentPage < maxPages && GameManager.instance.passedLevelIndex + 1 > currentPage * 6)
+        {
+            Debug.Log($"[{name}]: Next Page");
+
+            AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SELECT_AUDIO);
+
+            currentPage++;
+            currentLevelIndex = (currentPage - 1) * 6;
+            DisplayLevelItems();
+            targetStep -= pageStep;
+        }
+
+        MovePage();
+    }
+
+    public void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            Debug.Log($"[{name}]: Previous Page");
+
+            AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SELECT_AUDIO);
+
+            currentPage--;
+            currentLevelIndex = (currentPage - 1) * 6;
+            DisplayLevelItems();
+            targetStep += pageStep;
+        }
+
+        MovePage();
+    }
+
+    public void MovePage()
+    {
+        levelPagesRect.DOMove(targetStep, swipeDuration);
     }
 
     public void ShowLevelSelectUI()
