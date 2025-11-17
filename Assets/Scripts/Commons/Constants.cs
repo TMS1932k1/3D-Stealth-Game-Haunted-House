@@ -58,4 +58,5 @@ public class AudioClipDataNameStrings
 
     // UI AUDIO
     public const string SELECT_AUDIO = "Select";
+    public const string SWIPE_AUDIO = "Swipe";
 }

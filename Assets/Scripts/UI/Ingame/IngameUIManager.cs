@@ -101,6 +101,19 @@ public class IngameUIManager : MonoBehaviour
         }
     }
 
+    public void OnDialogueInput()
+    {
+        switch (currentUI)
+        {
+            case EIngameUI.Dialogue:
+                dialogueCanvasGroup.GetComponent<IInputAction>()?.OnConfirmInput();
+                break;
+
+            default:
+                return;
+        }
+    }
+
     private void HandleEndLevel(CanvasGroup imageCanvasGroup, bool doRestart)
     {
         if (showEndLevelCoroutine != null)

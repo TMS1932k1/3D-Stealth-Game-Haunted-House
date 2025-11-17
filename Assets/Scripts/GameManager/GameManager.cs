@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,12 +12,15 @@ public class GameManager : MonoBehaviour
 
     // Level list
     [SerializeField] private LevelListSO levelListData;
-    private LevelSO currentLevelData = null;
-    public int passedLevelIndex { get; private set; } = 6; // 8
+    public LevelSO currentLevelData { get; private set; } = null;
+    public int passedLevelIndex { get; private set; } = 6;
 
     // Active player
     private Player activePlayer = null;
     private IActive activeTarget = null;
+
+    // Conditions
+    private List<GoalCondition> completedDone = new();
 
 
     private void Awake()
@@ -82,11 +86,17 @@ public class GameManager : MonoBehaviour
 
     public void LoadToLevel(LevelSO levelData)
     {
+        Debug.Log($"[{name}]: Load to scene ({levelData.nameScene})");
+
+        // Create list of conditions which are completed
         currentLevelData = levelData;
+        completedDone.Clear();
+        foreach (GoalCondition condition in currentLevelData.conditions)
+            completedDone.Add(new GoalCondition(condition.idTarget, 0));
+
+        // Load level and change audio
         AudioManager.instance.PlayBgmAudio(AudioClipDataNameStrings.AMBIENT_AUDIO);
         SceneManager.LoadScene(currentLevelData.nameScene);
-
-        Debug.Log($"[{name}]: Load to scene ({levelData.nameScene})");
     }
 
     public void RestartLevel()
@@ -102,6 +112,40 @@ public class GameManager : MonoBehaviour
 
     public bool CheckLevelCondition()
     {
+        return true;
+    }
+
+    public void CheckConditions(string idTarget)
+    {
+        if (currentLevelData.conditions == null)
+        {
+            Debug.LogWarning($"[{name}]: Conditions list is null!");
+            return;
+        }
+
+        foreach (GoalCondition condition in completedDone)
+        {
+            if (condition.idTarget == idTarget)
+            {
+                condition.count++;
+            }
+        }
+    }
+
+    public bool CheckCompleted()
+    {
+        if (completedDone.Count != currentLevelData.conditions.Count)
+        {
+            Debug.LogWarning($"[{name}]: Conditions list and CompletedDone list do not match!");
+            return false;
+        }
+
+        for (int i = 0; i < currentLevelData.conditions.Count; i++)
+        {
+            if (completedDone[i].count < currentLevelData.conditions[i].count)
+                return false;
+        }
+
         return true;
     }
 

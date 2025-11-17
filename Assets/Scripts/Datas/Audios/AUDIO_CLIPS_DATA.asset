@@ -72,6 +72,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 83f1a02421af3e84e83b1b64b9294992, type: 3}
     volume: 0.8
     isLoop: 0
+  - nameData: Swipe
+    audioClip: {fileID: 8300000, guid: 102c9211a5d21e94ea0586e7e51436e0, type: 3}
+    volume: 0.8
+    isLoop: 0
   bgm:
   - nameData: Ambient
     audioClip: {fileID: 8300000, guid: 205287722f2b6b64583b86d65fdeeb11, type: 3}

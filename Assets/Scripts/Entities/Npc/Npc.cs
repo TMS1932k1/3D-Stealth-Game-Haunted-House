@@ -71,8 +71,13 @@ public class Npc : Entity, IObserver, IActive
             return;
         }
 
-        // Code UI to show dialogue
+        // Show dialogue UI
         IngameUIManager.instance.ShowDialogueUI(dialogueShow);
+
+        // Check conditions
+        if (isFirstActive)
+            GameManager.instance.CheckConditions(idTarget);
+
         isFirstActive = false;
     }
 

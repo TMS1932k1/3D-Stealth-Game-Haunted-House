@@ -129,7 +129,7 @@ public class LevelSelectUI : MonoBehaviour
         {
             Debug.Log($"[{name}]: Next Page");
 
-            AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SELECT_AUDIO);
+            AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SWIPE_AUDIO);
 
             currentPage++;
             currentLevelIndex = (currentPage - 1) * 6;
@@ -146,7 +146,7 @@ public class LevelSelectUI : MonoBehaviour
         {
             Debug.Log($"[{name}]: Previous Page");
 
-            AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SELECT_AUDIO);
+            AudioManager.instance.PlayUiAudio(AudioClipDataNameStrings.SWIPE_AUDIO);
 
             currentPage--;
             currentLevelIndex = (currentPage - 1) * 6;

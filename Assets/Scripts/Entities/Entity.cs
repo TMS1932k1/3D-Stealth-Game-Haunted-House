@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [SerializeField] private string idTarget;
+    [SerializeField] protected string idTarget;
 
     [Header("Movement")]
     [SerializeField] public float speedMove;

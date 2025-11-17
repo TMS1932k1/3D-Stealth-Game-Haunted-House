@@ -66,6 +66,9 @@ public class PickUp : MonoBehaviour, IObserver, IActive
             // Hide object and handle player hold
             gameObject.SetActive(false);
             player.playerHold.HoldPickUp(pickUpType, dialogue);
+
+            // Check conditions
+            GameManager.instance.CheckConditions(idTarget);
         }
 
     }
